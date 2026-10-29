@@ -13,9 +13,9 @@ const mono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
-const title = "Kauã Moreira · Desenvolvedor Front-end";
+const title = "Kauã Moreira · Desenvolvedor Full Stack";
 const description =
-  "Portfólio de Kauã Moreira Cirino, desenvolvedor Front-end (React, JavaScript, TypeScript) em Santarém, PA. Disponível para estágio.";
+  "Portfólio de Kauã Moreira Cirino, desenvolvedor Full Stack (React, TypeScript, Supabase) em Santarém, PA. Disponível para projetos.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://kauamoreira.vercel.app"),
