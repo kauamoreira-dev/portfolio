@@ -40,12 +40,12 @@ export function Contact() {
   }
 
   const inputClass =
-    "w-full rounded-xl border border-line bg-white px-4 py-3 text-ink placeholder:text-muted/60 outline-none transition focus:border-accent focus:ring-4 focus:ring-accent/10";
+    "w-full rounded-md border border-line bg-white px-4 py-3 text-ink placeholder:text-muted/60 outline-none transition focus:border-accent focus:ring-4 focus:ring-accent/10";
 
   return (
-    <section id="contact" className="scroll-mt-16 bg-surface py-24">
+    <section id="contact" className="scroll-mt-16 border-t border-line bg-surface py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionHeading label={c.label} title={c.title} />
+        <SectionHeading index={6} label={c.label} title={c.title} />
 
         <div className="grid gap-10 md:grid-cols-[1fr_1.2fr]">
           <Reveal>
@@ -57,13 +57,13 @@ export function Contact() {
                     href={ch.href}
                     target={ch.href.startsWith("mailto:") ? undefined : "_blank"}
                     rel="noreferrer"
-                    className="group flex items-center gap-4 rounded-2xl border border-line bg-white p-4 transition hover:border-accent"
+                    className="group flex items-center gap-4 rounded-lg border border-line bg-white p-4 transition hover:border-ink"
                   >
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-line text-ink transition-colors group-hover:border-accent group-hover:text-accent">
                       <ch.icon />
                     </span>
                     <span className="min-w-0 flex-1">
-                      <span className="block text-xs font-semibold uppercase tracking-wider text-muted">{ch.label}</span>
+                      <span className="block font-mono text-[11px] uppercase tracking-wider text-subtle">{ch.label}</span>
                       <span className="block truncate font-medium text-ink">{ch.value}</span>
                     </span>
                     <ArrowUpRightIcon width={18} height={18} className="text-muted transition group-hover:text-accent" />
@@ -74,21 +74,21 @@ export function Contact() {
           </Reveal>
 
           <Reveal delay={100}>
-            <form onSubmit={onSubmit} className="rounded-3xl border border-line bg-white p-6 shadow-sm sm:p-8">
+            <form onSubmit={onSubmit} className="rounded-xl border border-line bg-white p-6 shadow-sm sm:p-8">
               {/* honeypot: hidden from people, filled by bots */}
               <input type="text" name="company" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
               <div className="grid gap-5 sm:grid-cols-2">
                 <label className="block">
-                  <span className="mb-1.5 block text-sm font-semibold text-ink">{c.name}</span>
+                  <span className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-muted">{c.name}</span>
                   <input name="name" required maxLength={100} placeholder={c.namePh} className={inputClass} />
                 </label>
                 <label className="block">
-                  <span className="mb-1.5 block text-sm font-semibold text-ink">{c.email}</span>
+                  <span className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-muted">{c.email}</span>
                   <input name="email" type="email" required maxLength={200} placeholder={c.emailPh} className={inputClass} />
                 </label>
               </div>
               <label className="mt-5 block">
-                <span className="mb-1.5 block text-sm font-semibold text-ink">{c.message}</span>
+                <span className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-muted">{c.message}</span>
                 <textarea
                   name="message"
                   required
@@ -102,7 +102,7 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="mt-6 w-full rounded-full bg-accent px-6 py-3.5 font-semibold text-white shadow-lg shadow-accent/25 transition hover:bg-accent-strong disabled:opacity-60"
+                className="mt-6 w-full rounded-md bg-ink px-6 py-3.5 font-semibold text-white transition hover:bg-accent disabled:opacity-60"
               >
                 {status === "sending" ? c.sending : c.send}
               </button>

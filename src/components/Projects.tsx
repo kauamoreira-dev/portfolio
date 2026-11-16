@@ -4,98 +4,100 @@ import Image from "next/image";
 import { profile } from "@/lib/content";
 import { useLanguage } from "./LanguageProvider";
 import { Reveal, SectionHeading } from "./Reveal";
-import { ArrowUpRightIcon, CheckIcon, GithubIcon } from "./icons";
+import { ArrowUpRightIcon, GithubIcon } from "./icons";
 
-const vagasTags = ["React", "Vite", "TypeScript", "Supabase", "Vercel"];
+const vagasTags = ["React", "TypeScript", "Vite", "Supabase", "Vercel"];
 
 export function Projects() {
   const { t } = useLanguage();
   const v = t.projects.vagas;
 
   return (
-    <section id="projects" className="scroll-mt-16 py-24">
+    <section id="projects" className="scroll-mt-16 border-t border-line py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionHeading label={t.projects.label} title={t.projects.title} />
+        <SectionHeading index={3} label={t.projects.label} title={t.projects.title} />
 
         <Reveal>
-          <article className="grid overflow-hidden rounded-3xl border border-line bg-white shadow-sm transition-shadow hover:shadow-xl hover:shadow-accent/5 md:grid-cols-2">
-            <a
-              href="https://vagastapajos.com.br/"
-              target="_blank"
-              rel="noreferrer"
-              className="group relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-orange-50 to-surface p-8 sm:p-12"
-            >
-              <Image
-                src="/vagas-tapajos.png"
-                alt={v.imageAlt}
-                width={772}
-                height={806}
-                sizes="(max-width: 768px) 90vw, 480px"
-                className="w-full max-w-[380px] rounded-xl shadow-2xl transition-transform duration-500 group-hover:scale-[1.03]"
-              />
-            </a>
-
-            <div className="flex flex-col p-7 sm:p-10">
-              <span className="mb-4 w-fit rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent-strong">
-                {t.projects.featured}
-              </span>
-              <h3 className="text-2xl font-bold text-ink sm:text-3xl">{v.name}</h3>
-              <p className="mt-1 font-medium text-accent">{v.tagline}</p>
-              <p className="mt-5 leading-relaxed text-muted">{v.description}</p>
-
-              <ul className="mt-6 space-y-2">
-                {v.highlights.map((h) => (
-                  <li key={h} className="flex items-center gap-2.5 text-sm text-ink">
-                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-accent/10 text-accent">
-                      <CheckIcon width={13} height={13} strokeWidth={3} />
-                    </span>
-                    {h}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-6 flex flex-wrap gap-2">
-                {vagasTags.map((tag) => (
-                  <span key={tag} className="rounded-md bg-surface px-2.5 py-1 font-mono text-xs text-muted">
-                    {tag}
-                  </span>
-                ))}
+          <article className="overflow-hidden rounded-xl border border-line bg-white">
+            <div className="flex items-center justify-between gap-4 border-b border-line bg-surface px-5 py-3">
+              <div className="flex items-center gap-2">
+                <span className="h-2.5 w-2.5 rounded-full bg-line" />
+                <span className="h-2.5 w-2.5 rounded-full bg-line" />
+                <span className="h-2.5 w-2.5 rounded-full bg-line" />
+                <span className="ml-3 truncate font-mono text-xs text-muted">vagastapajos.com.br</span>
               </div>
+              <span className="inline-flex shrink-0 items-center gap-1.5 font-mono text-xs text-emerald-700">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                {t.projects.status}
+              </span>
+            </div>
 
-              <div className="mt-auto pt-8">
-                <a
-                  href="https://vagastapajos.com.br/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-accent"
-                >
-                  {t.projects.visit}
-                  <ArrowUpRightIcon width={16} height={16} />
-                </a>
+            <div className="grid lg:grid-cols-[1fr_1.1fr]">
+              <a
+                href={profile.vagasTapajos}
+                target="_blank"
+                rel="noreferrer"
+                className="group relative flex items-center justify-center overflow-hidden border-b border-line bg-surface p-8 sm:p-12 lg:border-r lg:border-b-0"
+              >
+                <div aria-hidden className="bg-grid absolute inset-0" />
+                <Image
+                  src="/vagas-tapajos.png"
+                  alt={v.imageAlt}
+                  width={772}
+                  height={806}
+                  sizes="(max-width: 1024px) 90vw, 440px"
+                  className="relative w-full max-w-[360px] rounded-lg border border-line shadow-xl transition-transform duration-500 group-hover:-translate-y-1"
+                />
+              </a>
+
+              <div className="flex flex-col p-7 sm:p-10">
+                <h3 className="text-3xl font-bold tracking-tight text-ink">{v.name}</h3>
+                <p className="mt-2 text-muted">{v.tagline}</p>
+
+                <dl className="mt-8 space-y-6">
+                  {v.blocks.map((b) => (
+                    <div key={b.k} className="grid gap-1 sm:grid-cols-[130px_1fr] sm:gap-6">
+                      <dt className="font-mono text-xs uppercase tracking-wider text-accent sm:pt-1">{b.k}</dt>
+                      <dd className="leading-relaxed text-ink/80">{b.v}</dd>
+                    </div>
+                  ))}
+                  <div className="grid gap-1 sm:grid-cols-[130px_1fr] sm:gap-6">
+                    <dt className="font-mono text-xs uppercase tracking-wider text-accent sm:pt-1">{v.role}</dt>
+                    <dd className="leading-relaxed text-ink/80">{v.roleValue}</dd>
+                  </div>
+                </dl>
+
+                <div className="mt-8 flex flex-wrap gap-2">
+                  {vagasTags.map((tag) => (
+                    <span key={tag} className="rounded-md border border-line px-2.5 py-1 font-mono text-xs text-muted">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-auto flex flex-wrap gap-3 pt-10">
+                  <a
+                    href={profile.vagasTapajos}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-md bg-ink px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-accent"
+                  >
+                    {t.projects.visit}
+                    <ArrowUpRightIcon width={16} height={16} />
+                  </a>
+                  <a
+                    href={profile.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-md border border-line px-5 py-2.5 text-sm font-semibold text-ink transition hover:border-ink"
+                  >
+                    <GithubIcon width={16} height={16} />
+                    {t.projects.more}
+                  </a>
+                </div>
               </div>
             </div>
           </article>
-        </Reveal>
-
-        <Reveal delay={100}>
-          <a
-            href={profile.github}
-            target="_blank"
-            rel="noreferrer"
-            className="group mt-6 flex flex-col items-start gap-4 rounded-3xl border-2 border-dashed border-line p-7 transition hover:border-accent sm:flex-row sm:items-center sm:p-8"
-          >
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-surface text-ink group-hover:text-accent">
-              <GithubIcon width={24} height={24} />
-            </span>
-            <div className="flex-1">
-              <p className="font-bold text-ink">{t.projects.soonTitle}</p>
-              <p className="mt-1 text-sm text-muted">{t.projects.soonText}</p>
-            </div>
-            <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
-              {t.projects.soonCta}
-              <ArrowUpRightIcon width={16} height={16} />
-            </span>
-          </a>
         </Reveal>
       </div>
     </section>

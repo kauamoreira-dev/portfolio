@@ -3,8 +3,9 @@
 @theme {
   --color-accent: #f97316;
   --color-accent-strong: #c2410c;
-  --color-ink: #1c1917;
+  --color-ink: #0c0a09;
   --color-muted: #57534e;
+  --color-subtle: #a8a29e;
   --color-line: #e7e5e4;
   --color-surface: #fafaf9;
   --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
@@ -20,9 +21,35 @@ body {
   background: rgb(249 115 22 / 0.2);
 }
 
+/* Subtle engineering grid, faded towards the edges */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(12 10 9 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(12 10 9 / 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 40%, transparent 100%);
+}
+
+.cursor::after {
+  content: "";
+  display: inline-block;
+  width: 0.5ch;
+  height: 0.9em;
+  margin-left: 0.15em;
+  vertical-align: -0.05em;
+  background: currentColor;
+  animation: blink 1.1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(20px);
   transition:
     opacity 0.7s ease,
     transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -36,7 +63,7 @@ body {
 @keyframes hero-in {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -57,6 +84,9 @@ body {
     opacity: 1;
     transform: none;
     transition: none;
+    animation: none;
+  }
+  .cursor::after {
     animation: none;
   }
 }

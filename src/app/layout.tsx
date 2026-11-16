@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     description,
     type: "website",
     locale: "pt_BR",
-    images: [{ url: "/kaua.jpg", width: 800, height: 1000, alt: "Kauã Moreira Cirino" }],
+    images: [{ url: "/kaua.jpg", width: 720, height: 900, alt: "Kauã Moreira Cirino" }],
   },
   twitter: { card: "summary", title, description, images: ["/kaua.jpg"] },
 };

@@ -1,11 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { profile } from "@/lib/content";
+import { profile, sectionIds } from "@/lib/content";
 import { useLanguage } from "./LanguageProvider";
 import { CloseIcon, MenuIcon } from "./icons";
-
-const sections = ["about", "projects", "skills", "education", "contact"] as const;
 
 export function Header() {
   const { lang, t, toggle } = useLanguage();
@@ -24,14 +22,12 @@ export function Header() {
       type="button"
       onClick={toggle}
       aria-label={t.langToggle}
-      className="flex items-center rounded-full border border-line bg-white p-0.5 text-xs font-semibold"
+      className="flex items-center rounded-md border border-line bg-white p-0.5 font-mono text-[11px] font-medium"
     >
       {(["pt", "en"] as const).map((l) => (
         <span
           key={l}
-          className={`rounded-full px-2.5 py-1 uppercase transition-colors ${
-            lang === l ? "bg-accent text-white" : "text-muted"
-          }`}
+          className={`rounded px-2 py-1 uppercase transition-colors ${lang === l ? "bg-ink text-white" : "text-muted"}`}
         >
           {l}
         </span>
@@ -42,36 +38,50 @@ export function Header() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all ${
-        scrolled || open ? "border-b border-line bg-white/85 backdrop-blur-md" : "bg-transparent"
+        scrolled || open ? "border-b border-line bg-white/80 backdrop-blur-md" : "border-b border-transparent"
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <a href="#inicio" className="text-lg font-extrabold tracking-tight text-ink">
-          {profile.initials}
-          <span className="text-accent">.</span>
+        <a href="#inicio" className="flex items-center gap-2.5">
+          <span className="flex h-8 w-8 items-center justify-center rounded-md bg-ink font-mono text-xs font-bold text-white">
+            {profile.initials}
+          </span>
+          <span className="hidden text-sm font-semibold text-ink sm:block">
+            {profile.shortName}
+            <span className="text-accent">.</span>
+          </span>
         </a>
 
-        <div className="hidden items-center gap-8 md:flex">
-          <ul className="flex items-center gap-7 text-sm font-medium text-muted">
-            {sections.map((s) => (
+        <div className="hidden items-center gap-7 lg:flex">
+          <ul className="flex items-center gap-6 text-sm text-muted">
+            {sectionIds.map((s, i) => (
               <li key={s}>
-                <a href={`#${s}`} className="transition-colors hover:text-accent">
+                <a href={`#${s}`} className="group transition-colors hover:text-ink">
+                  <span className="mr-1 font-mono text-[11px] text-subtle group-hover:text-accent">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   {t.nav[s]}
                 </a>
               </li>
             ))}
           </ul>
           {langButton}
+          <a
+            href="#contact"
+            className="rounded-md bg-ink px-4 py-2 text-sm font-semibold text-white transition hover:bg-accent"
+          >
+            {t.hero.ctaContact}
+          </a>
         </div>
 
-        <div className="flex items-center gap-3 md:hidden">
+        <div className="flex items-center gap-3 lg:hidden">
           {langButton}
           <button
             type="button"
             onClick={() => setOpen((o) => !o)}
             aria-label={t.menu}
             aria-expanded={open}
-            className="rounded-lg p-2 text-ink"
+            className="rounded-md p-2 text-ink"
           >
             {open ? <CloseIcon /> : <MenuIcon />}
           </button>
@@ -79,14 +89,15 @@ export function Header() {
       </nav>
 
       {open && (
-        <ul className="border-t border-line bg-white px-4 py-3 md:hidden">
-          {sections.map((s) => (
+        <ul className="border-t border-line bg-white px-4 py-3 lg:hidden">
+          {sectionIds.map((s, i) => (
             <li key={s}>
               <a
                 href={`#${s}`}
                 onClick={() => setOpen(false)}
-                className="block rounded-lg px-2 py-3 font-medium text-ink hover:bg-surface hover:text-accent"
+                className="flex items-center gap-3 rounded-md px-2 py-3 font-medium text-ink hover:bg-surface"
               >
+                <span className="font-mono text-xs text-accent">{String(i + 1).padStart(2, "0")}</span>
                 {t.nav[s]}
               </a>
             </li>
