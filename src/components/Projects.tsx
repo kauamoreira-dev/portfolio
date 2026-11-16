@@ -7,6 +7,7 @@ import { Reveal, SectionHeading } from "./Reveal";
 import { ArrowUpRightIcon, GithubIcon } from "./icons";
 
 type ProjectMeta = {
+  logo: string;
   url: string;
   host: string;
   image: { src: string; width: number; height: number };
@@ -16,12 +17,14 @@ type ProjectMeta = {
 
 const meta: Record<string, ProjectMeta> = {
   vagas: {
+    logo: "/logo-vagas-tapajos.png",
     url: "https://vagastapajos.com.br/",
     host: "vagastapajos.com.br",
     image: { src: "/vagas-tapajos.png", width: 772, height: 806 },
     tags: ["React", "TypeScript", "Vite", "Supabase", "Vercel"],
   },
   curriculo: {
+    logo: "/logo-curriculo-tapajos.png",
     url: "https://curriculo-tapajos.vercel.app/",
     host: "curriculo-tapajos.vercel.app",
     image: { src: "/curriculo-tapajos-preview.png", width: 1230, height: 843 },
@@ -51,7 +54,10 @@ export function Projects() {
                       <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-line" />
                       <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-line" />
                       <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-line" />
-                      <span className="ml-3 truncate font-mono text-xs text-muted">{m.host}</span>
+                      <span className="ml-3 flex min-w-0 items-center gap-2 rounded-md border border-line bg-white px-2.5 py-1">
+                        <Image src={m.logo} alt="" width={14} height={14} className="rounded-[3px]" />
+                        <span className="truncate font-mono text-xs text-muted">{m.host}</span>
+                      </span>
                     </div>
                     <span className="inline-flex shrink-0 items-center gap-1.5 font-mono text-xs text-emerald-700">
                       <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
@@ -82,9 +88,20 @@ export function Projects() {
                     </a>
 
                     <div className="flex flex-col p-7 sm:p-10">
-                      <span className="font-mono text-xs text-subtle">{String(i + 1).padStart(2, "0")}</span>
-                      <h3 className="mt-2 text-3xl font-bold tracking-tight text-ink">{item.name}</h3>
-                      <p className="mt-2 text-muted">{item.tagline}</p>
+                      <div className="flex items-center gap-4">
+                        <Image
+                          src={m.logo}
+                          alt={`Logo ${item.name}`}
+                          width={56}
+                          height={56}
+                          className="rounded-xl shadow-md"
+                        />
+                        <div>
+                          <span className="font-mono text-xs text-subtle">{String(i + 1).padStart(2, "0")}</span>
+                          <h3 className="text-3xl font-bold tracking-tight text-ink">{item.name}</h3>
+                        </div>
+                      </div>
+                      <p className="mt-4 text-muted">{item.tagline}</p>
 
                       <dl className="mt-8 space-y-6">
                         {[...item.blocks, { k: p.role, v: item.roleValue }].map((b) => (
