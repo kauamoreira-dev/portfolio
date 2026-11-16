@@ -10,7 +10,6 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/kauamoreira-dev",
   instagram: "https://www.instagram.com/kauamoreira.dev",
   github: "https://github.com/kauamoreira-dev",
-  vagasTapajos: "https://vagastapajos.com.br/",
 };
 
 export const sectionIds = ["about", "services", "projects", "stack", "education", "contact"] as const;
@@ -36,7 +35,7 @@ const pt = {
     terminal: [
       { cmd: "whoami", out: "kauã moreira — desenvolvedor full stack" },
       { cmd: "cat stack.txt", out: "react · typescript · supabase · vite" },
-      { cmd: "ls projetos/", out: "vagas-tapajos/  (em produção)" },
+      { cmd: "ls projetos/", out: "vagas-tapajos/  curriculo-tapajos/" },
       { cmd: "status", out: "● disponível para novos projetos" },
     ],
   },
@@ -44,7 +43,7 @@ const pt = {
     label: "Sobre",
     title: "Desenvolvedor focado em produtos que funcionam de ponta a ponta",
     p1: "Sou desenvolvedor Full Stack e estudante de Análise e Desenvolvimento de Sistemas. Trabalho com React e TypeScript no front-end e Supabase e APIs REST no back-end, cuidando de cada parte do produto: modelagem de dados, autenticação, regras de negócio e interface.",
-    p2: "Desenvolvi o Vagas Tapajós, uma plataforma de vagas de emprego em produção, e hoje aprofundo meus conhecimentos em Inteligência Artificial aplicada a produtos digitais pela trilha AI Product.",
+    p2: "Desenvolvi o Vagas Tapajós, uma plataforma de vagas de emprego, e o Currículo Tapajós, um gerador de currículos gratuito; os dois estão em produção. Hoje aprofundo meus conhecimentos em Inteligência Artificial aplicada a produtos digitais pela trilha AI Product.",
     p3: "Estou disponível para novos projetos e oportunidades em desenvolvimento de software.",
     photoAlt: "Foto de Kauã Moreira Cirino",
     facts: [
@@ -78,31 +77,56 @@ const pt = {
   },
   projects: {
     label: "Projetos",
-    title: "Projeto em destaque",
+    title: "Projetos em destaque",
     status: "Em produção",
-    vagas: {
-      name: "Vagas Tapajós",
-      tagline: "Plataforma de vagas de emprego para Santarém e região do Tapajós",
-      imageAlt: "Tela inicial do Vagas Tapajós",
-      blocks: [
-        {
-          k: "Desafio",
-          v: "Conectar candidatos e empresas de Santarém e região do Tapajós em um só lugar, de forma simples para quem procura e para quem contrata.",
-        },
-        {
-          k: "Solução",
-          v: "Uma plataforma web com dois perfis, candidato e empresa: empresas publicam vagas e candidatos se candidatam direto pelo site.",
-        },
-        {
-          k: "O que construí",
-          v: "A aplicação de ponta a ponta: front-end em React/Vite e back-end no Supabase, com banco de dados, autenticação, perfis, vagas, candidaturas e interface responsiva.",
-        },
-      ],
-      role: "Função",
-      roleValue: "Desenvolvedor Full Stack · projeto autoral",
-    },
+    role: "Função",
     visit: "Visitar site",
+    code: "Ver código",
     more: "Mais no GitHub",
+    items: [
+      {
+        id: "vagas",
+        name: "Vagas Tapajós",
+        tagline: "Plataforma de vagas de emprego para Santarém e região do Tapajós",
+        imageAlt: "Tela inicial do Vagas Tapajós",
+        blocks: [
+          {
+            k: "Desafio",
+            v: "Conectar candidatos e empresas de Santarém e região do Tapajós em um só lugar, de forma simples para quem procura e para quem contrata.",
+          },
+          {
+            k: "Solução",
+            v: "Uma plataforma web com dois perfis, candidato e empresa: empresas publicam vagas e candidatos se candidatam direto pelo site.",
+          },
+          {
+            k: "O que construí",
+            v: "A aplicação de ponta a ponta: front-end em React/Vite e back-end no Supabase, com banco de dados, autenticação, perfis, vagas, candidaturas e interface responsiva.",
+          },
+        ],
+        roleValue: "Desenvolvedor Full Stack · projeto autoral",
+      },
+      {
+        id: "curriculo",
+        name: "Currículo Tapajós",
+        tagline: "Gerador de currículos gratuito e sem cadastro, do ecossistema Tapajós",
+        imageAlt: "Tela inicial do Currículo Tapajós com exemplo de currículo",
+        blocks: [
+          {
+            k: "Desafio",
+            v: "Ajudar quem procura emprego a montar um currículo claro e bem organizado, sem criar conta nem pagar por ferramentas. Complementa o Vagas Tapajós.",
+          },
+          {
+            k: "Solução",
+            v: "Um editor em que a pessoa preenche as informações e vê a folha tomando forma em tempo real, com três modelos (Clássico, Moderno e Essencial) e PDF pronto para imprimir.",
+          },
+          {
+            k: "O que construí",
+            v: "A aplicação inteira em React, TypeScript e Vite: editor guiado por seções, prévia ao vivo, três modelos de layout, exportação em PDF e currículos salvos só no aparelho do usuário, sem servidor e com mais privacidade.",
+          },
+        ],
+        roleValue: "Desenvolvedor Full Stack · projeto autoral",
+      },
+    ],
   },
   stack: {
     label: "Stack",
@@ -166,7 +190,7 @@ const en: Dictionary = {
     terminal: [
       { cmd: "whoami", out: "kauã moreira — full stack developer" },
       { cmd: "cat stack.txt", out: "react · typescript · supabase · vite" },
-      { cmd: "ls projects/", out: "vagas-tapajos/  (in production)" },
+      { cmd: "ls projects/", out: "vagas-tapajos/  curriculo-tapajos/" },
       { cmd: "status", out: "● available for new projects" },
     ],
   },
@@ -174,7 +198,7 @@ const en: Dictionary = {
     label: "About",
     title: "A developer focused on products that work end to end",
     p1: "I'm a Full Stack developer and a Systems Analysis and Development student. I work with React and TypeScript on the front-end and Supabase and REST APIs on the back-end, taking care of every part of the product: data modeling, authentication, business rules and interface.",
-    p2: "I built Vagas Tapajós, a job board running in production, and I'm currently deepening my knowledge of AI applied to digital products through the AI Product track.",
+    p2: "I built Vagas Tapajós, a job board, and Currículo Tapajós, a free resume builder; both are running in production. I'm currently deepening my knowledge of AI applied to digital products through the AI Product track.",
     p3: "I'm available for new projects and software development opportunities.",
     photoAlt: "Photo of Kauã Moreira Cirino",
     facts: [
@@ -208,31 +232,56 @@ const en: Dictionary = {
   },
   projects: {
     label: "Projects",
-    title: "Featured project",
+    title: "Featured projects",
     status: "In production",
-    vagas: {
-      name: "Vagas Tapajós",
-      tagline: "A job board for Santarém and the Tapajós region",
-      imageAlt: "Vagas Tapajós home screen",
-      blocks: [
-        {
-          k: "Challenge",
-          v: "Connect candidates and companies from Santarém and the Tapajós region in one place, making it simple for both job seekers and employers.",
-        },
-        {
-          k: "Solution",
-          v: "A web platform with two profiles, candidate and company: companies post openings and candidates apply directly on the site.",
-        },
-        {
-          k: "What I built",
-          v: "The whole application: React/Vite front-end and Supabase back-end, with database, authentication, profiles, job posts, applications and a responsive UI.",
-        },
-      ],
-      role: "Role",
-      roleValue: "Full Stack Developer · personal project",
-    },
+    role: "Role",
     visit: "Visit site",
+    code: "View code",
     more: "More on GitHub",
+    items: [
+      {
+        id: "vagas",
+        name: "Vagas Tapajós",
+        tagline: "A job board for Santarém and the Tapajós region",
+        imageAlt: "Vagas Tapajós home screen",
+        blocks: [
+          {
+            k: "Challenge",
+            v: "Connect candidates and companies from Santarém and the Tapajós region in one place, making it simple for both job seekers and employers.",
+          },
+          {
+            k: "Solution",
+            v: "A web platform with two profiles, candidate and company: companies post openings and candidates apply directly on the site.",
+          },
+          {
+            k: "What I built",
+            v: "The whole application: React/Vite front-end and Supabase back-end, with database, authentication, profiles, job posts, applications and a responsive UI.",
+          },
+        ],
+        roleValue: "Full Stack Developer · personal project",
+      },
+      {
+        id: "curriculo",
+        name: "Currículo Tapajós",
+        tagline: "A free, sign-up-free resume builder, part of the Tapajós ecosystem",
+        imageAlt: "Currículo Tapajós home screen with a sample resume",
+        blocks: [
+          {
+            k: "Challenge",
+            v: "Help job seekers put together a clear, well-organized resume without creating an account or paying for tools. It complements Vagas Tapajós.",
+          },
+          {
+            k: "Solution",
+            v: "An editor where people fill in their information and watch the page take shape in real time, with three templates (Classic, Modern and Essential) and print-ready PDF.",
+          },
+          {
+            k: "What I built",
+            v: "The whole app in React, TypeScript and Vite: section-guided editor, live preview, three layout templates, PDF export and resumes stored only on the user's device, with no server and more privacy.",
+          },
+        ],
+        roleValue: "Full Stack Developer · personal project",
+      },
+    ],
   },
   stack: {
     label: "Stack",
