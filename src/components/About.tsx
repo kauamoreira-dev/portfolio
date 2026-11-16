@@ -20,7 +20,7 @@ export function About() {
                 alt={t.about.photoAlt}
                 fill
                 sizes="320px"
-                className="object-cover grayscale transition duration-700 group-hover:grayscale-0"
+                className="object-cover transition duration-700 group-hover:scale-[1.02]"
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 to-transparent p-4">
                 <p className="font-mono text-xs text-white/90">kauã_moreira.jpg</p>
