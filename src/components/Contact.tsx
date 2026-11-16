@@ -1,46 +1,111 @@
 "use client";
 
 import { useState } from "react";
+import { LIMITS, readContact, validateContact, type ContactInput, type FieldErrors } from "@/lib/contact";
 import { profile } from "@/lib/content";
 import { useLanguage } from "./LanguageProvider";
 import { Reveal, SectionHeading } from "./Reveal";
 import { ArrowUpRightIcon, GithubIcon, InstagramIcon, LinkedinIcon, MailIcon, WhatsappIcon } from "./icons";
 
-type Status = "idle" | "sending" | "success" | "error";
+type Status = "idle" | "sending" | "success" | "invalid" | "server" | "network";
 
 export function Contact() {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
   const c = t.contact;
   const [status, setStatus] = useState<Status>("idle");
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
+  const [sentName, setSentName] = useState("");
 
   const channels = [
-    { label: "E-mail", value: profile.email, href: `mailto:${profile.email}`, icon: MailIcon },
-    { label: "WhatsApp", value: profile.phoneDisplay, href: profile.whatsapp, icon: WhatsappIcon },
+    {
+      label: "E-mail",
+      value: profile.email,
+      href: `mailto:${profile.email}?subject=${encodeURIComponent(c.emailSubject)}`,
+      icon: MailIcon,
+    },
+    {
+      label: "WhatsApp",
+      value: profile.phoneDisplay,
+      href: `${profile.whatsapp}?text=${encodeURIComponent(c.whatsappText)}`,
+      icon: WhatsappIcon,
+    },
     { label: "LinkedIn", value: "/in/kauamoreira-dev", href: profile.linkedin, icon: LinkedinIcon },
     { label: "Instagram", value: "@kauamoreira.dev", href: profile.instagram, icon: InstagramIcon },
     { label: "GitHub", value: "kauamoreira-dev", href: profile.github, icon: GithubIcon },
   ];
 
+  function clearFieldError(field: keyof ContactInput) {
+    if (!fieldErrors[field]) return;
+    setFieldErrors((prev) => {
+      const next = { ...prev };
+      delete next[field];
+      return next;
+    });
+    if (status === "invalid") setStatus("idle");
+  }
+
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form));
+    const input = readContact(data);
+
+    const errors = validateContact(input);
+    setFieldErrors(errors);
+    if (Object.keys(errors).length > 0) {
+      setStatus("invalid");
+      form.querySelector<HTMLElement>(`[name="${Object.keys(errors)[0]}"]`)?.focus();
+      return;
+    }
+
     setStatus("sending");
+    let res: Response;
     try {
-      const res = await fetch("/api/contact", {
+      res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+        body: JSON.stringify({ ...data, lang }),
       });
-      if (!res.ok) throw new Error();
+    } catch {
+      setStatus("network");
+      return;
+    }
+
+    if (res.ok) {
+      setSentName(input.name.split(" ")[0]);
       form.reset();
       setStatus("success");
-    } catch {
-      setStatus("error");
+      return;
+    }
+    const payload = await res.json().catch(() => ({}));
+    if (res.status === 400 && payload.fields) {
+      setFieldErrors(payload.fields);
+      setStatus("invalid");
+    } else {
+      setStatus("server");
     }
   }
 
-  const inputClass =
-    "w-full rounded-md border border-line bg-white px-4 py-3 text-ink placeholder:text-muted/60 outline-none transition focus:border-accent focus:ring-4 focus:ring-accent/10";
+  const inputClass = (field: keyof ContactInput) =>
+    `w-full rounded-md border bg-white px-4 py-3 text-ink placeholder:text-muted/60 outline-none transition focus:ring-4 ${
+      fieldErrors[field]
+        ? "border-red-500 focus:border-red-500 focus:ring-red-500/10"
+        : "border-line focus:border-accent focus:ring-accent/10"
+    }`;
+
+  const errorText = (field: keyof ContactInput) =>
+    fieldErrors[field] && (
+      <span id={`${field}-error`} className="mt-1.5 block text-sm text-red-600">
+        {c.fieldErrors[fieldErrors[field]!]}
+      </span>
+    );
+
+  const statusMessage = {
+    success: { text: c.success.replace("{name}", sentName), className: "text-green-700" },
+    invalid: { text: c.errorInvalid, className: "text-red-600" },
+    server: { text: c.errorServer, className: "text-red-600" },
+    network: { text: c.errorNetwork, className: "text-red-600" },
+  }[status as "success" | "invalid" | "server" | "network"];
 
   return (
     <section id="contact" className="scroll-mt-16 border-t border-line bg-surface py-28">
@@ -74,17 +139,38 @@ export function Contact() {
           </Reveal>
 
           <Reveal delay={100}>
-            <form onSubmit={onSubmit} className="rounded-xl border border-line bg-white p-6 shadow-sm sm:p-8">
+            <form onSubmit={onSubmit} noValidate className="rounded-xl border border-line bg-white p-6 shadow-sm sm:p-8">
               {/* honeypot: hidden from people, filled by bots */}
               <input type="text" name="company" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
               <div className="grid gap-5 sm:grid-cols-2">
                 <label className="block">
                   <span className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-muted">{c.name}</span>
-                  <input name="name" required maxLength={100} placeholder={c.namePh} className={inputClass} />
+                  <input
+                    name="name"
+                    required
+                    maxLength={LIMITS.name}
+                    placeholder={c.namePh}
+                    aria-invalid={!!fieldErrors.name}
+                    aria-describedby={fieldErrors.name ? "name-error" : undefined}
+                    onInput={() => clearFieldError("name")}
+                    className={inputClass("name")}
+                  />
+                  {errorText("name")}
                 </label>
                 <label className="block">
                   <span className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-muted">{c.email}</span>
-                  <input name="email" type="email" required maxLength={200} placeholder={c.emailPh} className={inputClass} />
+                  <input
+                    name="email"
+                    type="email"
+                    required
+                    maxLength={LIMITS.email}
+                    placeholder={c.emailPh}
+                    aria-invalid={!!fieldErrors.email}
+                    aria-describedby={fieldErrors.email ? "email-error" : undefined}
+                    onInput={() => clearFieldError("email")}
+                    className={inputClass("email")}
+                  />
+                  {errorText("email")}
                 </label>
               </div>
               <label className="mt-5 block">
@@ -92,12 +178,16 @@ export function Contact() {
                 <textarea
                   name="message"
                   required
-                  minLength={10}
-                  maxLength={5000}
+                  minLength={LIMITS.messageMin}
+                  maxLength={LIMITS.messageMax}
                   rows={6}
                   placeholder={c.messagePh}
-                  className={`${inputClass} resize-none`}
+                  aria-invalid={!!fieldErrors.message}
+                  aria-describedby={fieldErrors.message ? "message-error" : undefined}
+                  onInput={() => clearFieldError("message")}
+                  className={`${inputClass("message")} resize-none`}
                 />
+                {errorText("message")}
               </label>
               <button
                 type="submit"
@@ -107,8 +197,7 @@ export function Contact() {
                 {status === "sending" ? c.sending : c.send}
               </button>
               <p aria-live="polite" className="mt-4 min-h-6 text-center text-sm font-medium">
-                {status === "success" && <span className="text-green-700">{c.success}</span>}
-                {status === "error" && <span className="text-red-600">{c.error}</span>}
+                {statusMessage && <span className={statusMessage.className}>{statusMessage.text}</span>}
               </p>
             </form>
           </Reveal>

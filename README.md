@@ -23,6 +23,7 @@ O formulário envia e-mails pelo [Resend](https://resend.com). Configure as vari
 | `CONTACT_TO_EMAIL` | não | Para quem as mensagens vão (padrão: kauacirinom@icloud.com) |
 | `CONTACT_FROM_EMAIL` | não | Remetente (padrão: `onboarding@resend.dev`) |
 | `NEXT_PUBLIC_SITE_URL` | não | URL pública do site, usada nas imagens de compartilhamento |
+| `CONTACT_AUTOREPLY` | não | `true` envia um e-mail de confirmação para o visitante. Exige um domínio verificado no Resend e `CONTACT_FROM_EMAIL` usando esse domínio |
 
 ## Editando o conteúdo
 
