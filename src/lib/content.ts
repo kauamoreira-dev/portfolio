@@ -27,9 +27,9 @@ const pt = {
   hero: {
     status: "Disponível para projetos",
     role: "Desenvolvedor Full Stack",
-    headline: { start: "Desenvolvo produtos digitais", accent: "completos", end: ", da ideia ao ar." },
+    headline: { start: "Problemas reais pedem soluções", accent: "sob medida", end: "." },
     pitch:
-      "Sites, sistemas e aplicações web feitos de ponta a ponta, como o Vagas Tapajós e o Currículo Tapajós, que já estão no ar.",
+      "Transformo processos manuais, ideias e gargalos em sites e sistemas web que funcionam, como o Vagas Tapajós e o Currículo Tapajós, criados para resolver problemas reais da região.",
     ctaQuote: "Solicitar orçamento",
     ctaProjects: "Ver projetos",
     highlights: ["2 produtos no ar", "Do planejamento à publicação", "Atendimento remoto", "Resposta em até 24h úteis"],
@@ -196,9 +196,9 @@ const en: Dictionary = {
   hero: {
     status: "Available for projects",
     role: "Full Stack Developer",
-    headline: { start: "I build", accent: "complete", end: " digital products, from idea to launch." },
+    headline: { start: "Real problems call for", accent: "tailored solutions", end: "." },
     pitch:
-      "Websites, systems and web applications built end to end, like Vagas Tapajós and Currículo Tapajós, both already live.",
+      "I turn manual processes, ideas and bottlenecks into websites and web systems that work, like Vagas Tapajós and Currículo Tapajós, built to solve real problems in the region.",
     ctaQuote: "Request a quote",
     ctaProjects: "See projects",
     highlights: ["2 products live", "From planning to launch", "Remote work", "Reply within 1 business day"],
