@@ -202,6 +202,7 @@ const pt = {
   footer: { built: "Desenvolvido com Next.js e TypeScript", top: "Voltar ao topo" },
   langToggle: "Mudar idioma para inglês",
   menu: "Abrir menu",
+  whatsappFab: "Fale comigo no WhatsApp",
 };
 
 export type Dictionary = typeof pt;
@@ -393,6 +394,7 @@ const en: Dictionary = {
   footer: { built: "Built with Next.js and TypeScript", top: "Back to top" },
   langToggle: "Switch language to Portuguese",
   menu: "Open menu",
+  whatsappFab: "Chat with me on WhatsApp",
 };
 
 export const dictionaries: Record<Lang, Dictionary> = { pt, en };
