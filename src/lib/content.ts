@@ -27,14 +27,17 @@ const pt = {
   hero: {
     status: "Disponível para projetos",
     role: "Desenvolvedor Full Stack",
+    headline: { start: "Desenvolvo produtos digitais", accent: "completos", end: ", da ideia ao ar." },
     pitch:
-      "Crio aplicações web completas, do banco de dados à interface, com React, TypeScript e Supabase. Código limpo, interfaces rápidas e foco no que gera resultado.",
+      "Sites, sistemas e aplicações web feitos de ponta a ponta, como o Vagas Tapajós e o Currículo Tapajós, que já estão no ar.",
+    ctaQuote: "Solicitar orçamento",
     ctaProjects: "Ver projetos",
+    highlights: ["2 produtos no ar", "Do planejamento à publicação", "Atendimento remoto", "Resposta em até 24h úteis"],
     ctaContact: "Vamos conversar",
     location: "Santarém, PA · Brasil",
     terminal: [
       { cmd: "whoami", out: "kauã moreira — desenvolvedor full stack" },
-      { cmd: "cat stack.txt", out: "react · typescript · supabase · vite" },
+      { cmd: "cat servicos.txt", out: "sites · sistemas web · landing pages · manutenção" },
       { cmd: "ls projetos/", out: "vagas-tapajos/  curriculo-tapajos/" },
       { cmd: "status", out: "● disponível para novos projetos" },
     ],
@@ -193,14 +196,17 @@ const en: Dictionary = {
   hero: {
     status: "Available for projects",
     role: "Full Stack Developer",
+    headline: { start: "I build", accent: "complete", end: " digital products, from idea to launch." },
     pitch:
-      "I build complete web applications, from the database to the interface, with React, TypeScript and Supabase. Clean code, fast interfaces and a focus on results.",
+      "Websites, systems and web applications built end to end, like Vagas Tapajós and Currículo Tapajós, both already live.",
+    ctaQuote: "Request a quote",
     ctaProjects: "See projects",
+    highlights: ["2 products live", "From planning to launch", "Remote work", "Reply within 1 business day"],
     ctaContact: "Let's talk",
     location: "Santarém, PA · Brazil",
     terminal: [
       { cmd: "whoami", out: "kauã moreira — full stack developer" },
-      { cmd: "cat stack.txt", out: "react · typescript · supabase · vite" },
+      { cmd: "cat services.txt", out: "websites · web apps · landing pages · maintenance" },
       { cmd: "ls projects/", out: "vagas-tapajos/  curriculo-tapajos/" },
       { cmd: "status", out: "● available for new projects" },
     ],

@@ -2,7 +2,7 @@
 
 import { profile } from "@/lib/content";
 import { useLanguage } from "./LanguageProvider";
-import { ArrowRightIcon, GithubIcon, InstagramIcon, LinkedinIcon, MapPinIcon } from "./icons";
+import { ArrowRightIcon, CheckIcon, GithubIcon, InstagramIcon, LinkedinIcon, MapPinIcon } from "./icons";
 
 export function Hero() {
   const { t } = useLanguage();
@@ -31,26 +31,30 @@ export function Hero() {
             {t.hero.status}
           </div>
 
-          <h1 className="text-5xl font-extrabold leading-[1.02] tracking-tight text-ink sm:text-7xl">
+          <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted sm:text-sm sm:tracking-[0.2em]">
             {profile.shortName}
-            <span className="text-accent">.</span>
+            <span className="mx-2 text-accent">·</span>
+            {t.hero.role}
+          </p>
+          <h1 className="mt-5 text-[2.6rem] font-extrabold leading-[1.05] tracking-tight text-ink sm:text-6xl">
+            {t.hero.headline.start} <span className="text-accent">{t.hero.headline.accent}</span>
+            {t.hero.headline.end}
           </h1>
-          <p className="cursor mt-5 font-mono text-lg font-medium text-accent sm:text-xl">{t.hero.role}</p>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">{t.hero.pitch}</p>
 
           <div className="mt-10 flex flex-wrap gap-3">
             <a
-              href="#projects"
+              href="#contact"
               className="group inline-flex items-center gap-2 rounded-md bg-ink px-6 py-3 font-semibold text-white transition hover:bg-accent"
             >
-              {t.hero.ctaProjects}
+              {t.hero.ctaQuote}
               <ArrowRightIcon width={18} height={18} className="transition-transform group-hover:translate-x-0.5" />
             </a>
             <a
-              href="#contact"
+              href="#projects"
               className="inline-flex items-center gap-2 rounded-md border border-line bg-white px-6 py-3 font-semibold text-ink transition hover:border-ink"
             >
-              {t.hero.ctaContact}
+              {t.hero.ctaProjects}
             </a>
           </div>
 
@@ -100,6 +104,19 @@ export function Hero() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="relative mx-auto mt-20 max-w-6xl px-4 sm:px-6">
+        <ul className="hero-in grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line lg:grid-cols-4" style={{ animationDelay: "300ms" }}>
+          {t.hero.highlights.map((h) => (
+            <li key={h} className="flex items-center gap-3 bg-white/90 px-4 py-4 text-sm font-medium text-ink backdrop-blur sm:px-6 sm:py-5">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent">
+                <CheckIcon width={14} height={14} strokeWidth={3} />
+              </span>
+              {h}
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
