@@ -77,6 +77,28 @@ const pt = {
         text: "Correção de bugs, novas funcionalidades, ajustes de performance e deploy contínuo na Vercel.",
       },
     ],
+    process: {
+      label: "Como funciona",
+      title: "Do primeiro contato à entrega",
+      steps: [
+        {
+          title: "Conversa",
+          text: "Você me conta a ideia ou o problema pelo WhatsApp ou pelo formulário. Entendo o seu negócio e o que precisa ser resolvido.",
+          tag: "Sem custo",
+        },
+        {
+          title: "Proposta",
+          text: "Envio uma proposta clara, com o que será feito, prazo e valor. Sem compromisso e sem letras miúdas.",
+          tag: "Prazo e valor definidos",
+        },
+        {
+          title: "Desenvolvimento e entrega",
+          text: "Desenvolvo mostrando o andamento, publico o projeto no ar e acompanho os primeiros dias de uso.",
+          tag: "Projeto no ar",
+        },
+      ],
+      cta: "Começar uma conversa",
+    },
   },
   projects: {
     label: "Projetos",
@@ -246,6 +268,28 @@ const en: Dictionary = {
         text: "Bug fixes, new features, performance tuning and continuous deployment on Vercel.",
       },
     ],
+    process: {
+      label: "How it works",
+      title: "From first contact to delivery",
+      steps: [
+        {
+          title: "Conversation",
+          text: "Tell me about your idea or problem on WhatsApp or through the form. I get to know your business and what needs solving.",
+          tag: "Free",
+        },
+        {
+          title: "Proposal",
+          text: "I send a clear proposal with scope, timeline and price. No commitment and no fine print.",
+          tag: "Clear timeline and price",
+        },
+        {
+          title: "Build and delivery",
+          text: "I build while sharing progress, launch the project and follow up during the first days of use.",
+          tag: "Project live",
+        },
+      ],
+      cta: "Start a conversation",
+    },
   },
   projects: {
     label: "Projects",
