@@ -12,7 +12,7 @@ export const profile = {
   github: "https://github.com/kauamoreira-dev",
 };
 
-export const sectionIds = ["about", "services", "projects", "stack", "education", "contact"] as const;
+export const sectionIds = ["projects", "services", "about", "contact"] as const;
 export type SectionId = (typeof sectionIds)[number];
 
 const pt = {
@@ -95,15 +95,15 @@ const pt = {
         blocks: [
           {
             k: "Desafio",
-            v: "Conectar candidatos e empresas de Santarém e região do Tapajós em um só lugar, de forma simples para quem procura e para quem contrata.",
+            v: "Conectar candidatos e empresas de Santarém e região do Tapajós em um só lugar.",
           },
           {
             k: "Solução",
-            v: "Uma plataforma web com dois perfis, candidato e empresa: empresas publicam vagas e candidatos se candidatam direto pelo site.",
+            v: "Plataforma com perfis de candidato e empresa: empresas publicam vagas e candidatos se candidatam pelo site.",
           },
           {
             k: "O que construí",
-            v: "A aplicação de ponta a ponta: front-end em React/Vite e back-end no Supabase, com banco de dados, autenticação, perfis, vagas, candidaturas e interface responsiva.",
+            v: "Tudo, de ponta a ponta: front-end, back-end, banco de dados, login, perfis, vagas e candidaturas.",
           },
         ],
         roleValue: "Desenvolvedor Full Stack · projeto autoral",
@@ -116,15 +116,15 @@ const pt = {
         blocks: [
           {
             k: "Desafio",
-            v: "Ajudar quem procura emprego a montar um currículo claro e bem organizado, sem criar conta nem pagar por ferramentas. Complementa o Vagas Tapajós.",
+            v: "Ajudar quem procura emprego a montar um bom currículo, sem cadastro e sem pagar nada. Complementa o Vagas Tapajós.",
           },
           {
             k: "Solução",
-            v: "Um editor em que a pessoa preenche as informações e vê a folha tomando forma em tempo real, com três modelos (Clássico, Moderno e Essencial) e PDF pronto para imprimir.",
+            v: "Editor com prévia ao vivo, três modelos prontos e PDF para imprimir.",
           },
           {
             k: "O que construí",
-            v: "A aplicação inteira em React, TypeScript e Vite: editor guiado por seções, prévia ao vivo, três modelos de layout, exportação em PDF e currículos salvos só no aparelho do usuário, sem servidor e com mais privacidade.",
+            v: "A aplicação inteira, com os dados salvos só no aparelho do usuário: sem servidor e com mais privacidade.",
           },
         ],
         roleValue: "Desenvolvedor Full Stack · projeto autoral",
@@ -264,15 +264,15 @@ const en: Dictionary = {
         blocks: [
           {
             k: "Challenge",
-            v: "Connect candidates and companies from Santarém and the Tapajós region in one place, making it simple for both job seekers and employers.",
+            v: "Connect candidates and companies from Santarém and the Tapajós region in one place.",
           },
           {
             k: "Solution",
-            v: "A web platform with two profiles, candidate and company: companies post openings and candidates apply directly on the site.",
+            v: "A platform with candidate and company profiles: companies post openings and candidates apply on the site.",
           },
           {
             k: "What I built",
-            v: "The whole application: React/Vite front-end and Supabase back-end, with database, authentication, profiles, job posts, applications and a responsive UI.",
+            v: "Everything, end to end: front-end, back-end, database, login, profiles, job posts and applications.",
           },
         ],
         roleValue: "Full Stack Developer · personal project",
@@ -285,15 +285,15 @@ const en: Dictionary = {
         blocks: [
           {
             k: "Challenge",
-            v: "Help job seekers put together a clear, well-organized resume without creating an account or paying for tools. It complements Vagas Tapajós.",
+            v: "Help job seekers build a good resume, with no sign-up and no cost. It complements Vagas Tapajós.",
           },
           {
             k: "Solution",
-            v: "An editor where people fill in their information and watch the page take shape in real time, with three templates (Classic, Modern and Essential) and print-ready PDF.",
+            v: "An editor with live preview, three ready-made templates and print-ready PDF.",
           },
           {
             k: "What I built",
-            v: "The whole app in React, TypeScript and Vite: section-guided editor, live preview, three layout templates, PDF export and resumes stored only on the user's device, with no server and more privacy.",
+            v: "The whole app, with data stored only on the user's device: no server and more privacy.",
           },
         ],
         roleValue: "Full Stack Developer · personal project",

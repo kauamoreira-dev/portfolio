@@ -110,7 +110,7 @@ export function Contact() {
   return (
     <section id="contact" className="scroll-mt-16 border-t border-line bg-surface py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionHeading index={6} label={c.label} title={c.title} />
+        <SectionHeading index={4} label={c.label} title={c.title} />
 
         <div className="grid gap-10 md:grid-cols-[1fr_1.2fr]">
           <Reveal>

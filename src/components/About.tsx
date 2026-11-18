@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import { EducationBlock } from "./Education";
 import { useLanguage } from "./LanguageProvider";
 import { Reveal, SectionHeading } from "./Reveal";
+import { StackBlock } from "./Stack";
 
 export function About() {
   const { t } = useLanguage();
@@ -10,7 +12,7 @@ export function About() {
   return (
     <section id="about" className="scroll-mt-16 border-t border-line py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionHeading index={1} label={t.about.label} title={t.about.title} />
+        <SectionHeading index={3} label={t.about.label} title={t.about.title} />
 
         <div className="grid gap-12 lg:grid-cols-[320px_1fr] lg:gap-16">
           <Reveal>
@@ -44,6 +46,9 @@ export function About() {
             </Reveal>
           </div>
         </div>
+
+        <StackBlock />
+        <EducationBlock />
       </div>
     </section>
   );

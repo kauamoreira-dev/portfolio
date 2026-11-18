@@ -40,7 +40,7 @@ export function Projects() {
   return (
     <section id="projects" className="scroll-mt-16 border-t border-line py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionHeading index={3} label={p.label} title={p.title} />
+        <SectionHeading index={1} label={p.label} title={p.title} />
 
         <div className="space-y-10">
           {p.items.map((item, i) => {

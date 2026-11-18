@@ -54,3 +54,12 @@ export function SectionHeading({ index, label, title }: { index: number; label: 
     </Reveal>
   );
 }
+
+export function SubHeading({ label, title }: { label: string; title: string }) {
+  return (
+    <Reveal className="mb-10 border-t border-line pt-14">
+      <p className="mb-3 font-mono text-xs uppercase tracking-[0.2em] text-accent">{label}</p>
+      <h3 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">{title}</h3>
+    </Reveal>
+  );
+}

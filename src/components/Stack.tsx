@@ -15,7 +15,7 @@ import {
   type SimpleIcon,
 } from "simple-icons";
 import { useLanguage } from "./LanguageProvider";
-import { Reveal, SectionHeading } from "./Reveal";
+import { Reveal, SubHeading } from "./Reveal";
 import { CodeIcon } from "./icons";
 
 type Tech = { name: string; icon?: SimpleIcon };
@@ -70,13 +70,13 @@ function TechTile({ tech }: { tech: Tech }) {
   );
 }
 
-export function Stack() {
+export function StackBlock() {
   const { t } = useLanguage();
 
   return (
-    <section id="stack" className="scroll-mt-16 border-t border-line bg-surface py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionHeading index={4} label={t.stack.label} title={t.stack.title} />
+    <div id="stack" className="mt-24 scroll-mt-20">
+      <div>
+        <SubHeading label={t.stack.label} title={t.stack.title} />
 
         <div className="space-y-10">
           {groups.map((g, i) => (
@@ -93,6 +93,6 @@ export function Stack() {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

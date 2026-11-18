@@ -1,17 +1,17 @@
 "use client";
 
 import { useLanguage } from "./LanguageProvider";
-import { Reveal, SectionHeading } from "./Reveal";
+import { Reveal, SubHeading } from "./Reveal";
 import { AwardIcon, GraduationIcon } from "./icons";
 
-export function Education() {
+export function EducationBlock() {
   const { t } = useLanguage();
   const e = t.education;
 
   return (
-    <section id="education" className="scroll-mt-16 border-t border-line py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionHeading index={5} label={e.label} title={e.title} />
+    <div id="education" className="mt-24 scroll-mt-20">
+      <div>
+        <SubHeading label={e.label} title={e.title} />
 
         <div className="grid gap-8 lg:grid-cols-2">
           <Reveal>
@@ -48,6 +48,6 @@ export function Education() {
           </Reveal>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
