@@ -44,10 +44,10 @@ const pt = {
   },
   about: {
     label: "Sobre",
-    title: "Desenvolvedor focado em produtos que funcionam de ponta a ponta",
-    p1: "Sou desenvolvedor Full Stack e estudante de Análise e Desenvolvimento de Sistemas. Trabalho com React e TypeScript no front-end e Supabase e APIs REST no back-end, cuidando de cada parte do produto: modelagem de dados, autenticação, regras de negócio e interface.",
-    p2: "Desenvolvi o Vagas Tapajós, uma plataforma de vagas de emprego, e o Currículo Tapajós, um gerador de currículos gratuito; os dois estão em produção. Hoje aprofundo meus conhecimentos em Inteligência Artificial aplicada a produtos digitais pela trilha AI Product.",
-    p3: "Estou disponível para novos projetos e oportunidades em desenvolvimento de software.",
+    title: "Desenvolvedor focado em transformar problemas em soluções que funcionam",
+    p1: "Sou desenvolvedor Full Stack e estudante de Análise e Desenvolvimento de Sistemas. Crio sites e sistemas web completos com React, TypeScript e Supabase, cuidando de cada etapa: entendimento do problema, banco de dados, segurança, regras de negócio e interface.",
+    p2: "Desenvolvi o Vagas Tapajós, uma plataforma de vagas de emprego, e o Currículo Tapajós, um gerador de currículos gratuito, os dois já no ar. Hoje aprofundo meus conhecimentos em Inteligência Artificial aplicada a produtos digitais.",
+    p3: "Estou disponível para novos projetos, freelas e oportunidades em desenvolvimento de software.",
     photoAlt: "Foto de Kauã Moreira Cirino",
     facts: [
       { k: "Base", v: "Santarém, PA" },
@@ -213,10 +213,10 @@ const en: Dictionary = {
   },
   about: {
     label: "About",
-    title: "A developer focused on products that work end to end",
-    p1: "I'm a Full Stack developer and a Systems Analysis and Development student. I work with React and TypeScript on the front-end and Supabase and REST APIs on the back-end, taking care of every part of the product: data modeling, authentication, business rules and interface.",
-    p2: "I built Vagas Tapajós, a job board, and Currículo Tapajós, a free resume builder; both are running in production. I'm currently deepening my knowledge of AI applied to digital products through the AI Product track.",
-    p3: "I'm available for new projects and software development opportunities.",
+    title: "A developer focused on turning problems into solutions that work",
+    p1: "I'm a Full Stack developer and a Systems Analysis and Development student. I build complete websites and web systems with React, TypeScript and Supabase, taking care of every step: understanding the problem, database, security, business rules and interface.",
+    p2: "I built Vagas Tapajós, a job board, and Currículo Tapajós, a free resume builder, both already live. I'm currently deepening my knowledge of AI applied to digital products.",
+    p3: "I'm available for new projects, freelance work and software development opportunities.",
     photoAlt: "Photo of Kauã Moreira Cirino",
     facts: [
       { k: "Based in", v: "Santarém, Brazil" },
